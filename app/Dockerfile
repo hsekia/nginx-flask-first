@@ -1,8 +1,7 @@
-FROM python:3.7.3-alpine3.8
+FROM python:3.7.3-stretch
 
 WORKDIR /app/
-COPY *.py *.txt /app/
+COPY *.py *.txt *.ini /app/
 RUN pip install -r requirements.txt 
 
-
-CMD ["python", "hello.py"]
+CMD ["uwsgi", "--ini", "app.ini"]
