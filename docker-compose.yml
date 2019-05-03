@@ -7,6 +7,8 @@ services:
       context: ./app
     depends_on:
       - nginx
+    ports:
+      - "5000"
     networks:
       - net
 
@@ -14,7 +16,7 @@ services:
     image: nginx:1.13
     restart: always
     ports:
-      - 80:80
+      - "80:80"
     volumes:
       - ./nginx/conf.d/:/etc/nginx/conf.d
       - ./nginx/html/:/usr/share/nginx/html
