@@ -4,4 +4,4 @@ WORKDIR /app/
 COPY *.py *.txt *.ini /app/
 RUN pip install -r requirements.txt 
 
-CMD ["uwsgi", "--ini", "app.ini"]
+CMD ["gunicorn", "-b", "0.0.0.0:80", "hello:app"]

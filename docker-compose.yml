@@ -5,24 +5,23 @@ services:
   app:
     build:
       context: ./app
-    #depends_on:
-    #  - nginx
-    ports:
-      - 80:80
-      - 5000:5000
+    depends_on:
+      - nginx
+    #ports:
+    #  - 80:80
     networks:
       - net
 
-  #nginx:
-  #  image: nginx:1.13
-  #  restart: always
-  #  ports:
-  #    - 80:80
-  #  volumes:
-  #    - ./nginx/conf.d/:/etc/nginx/conf.d
-  #    - ./nginx/html/:/usr/share/nginx/html
-  #  networks:
-  #    - net
+  nginx:
+    image: nginx:1.13
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d
+      - ./nginx/html/:/usr/share/nginx/html
+    networks:
+      - net
  
 networks:
   net:
