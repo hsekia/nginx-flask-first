@@ -5,8 +5,6 @@ services:
   app:
     build:
       context: ./app
-    depends_on:
-      - nginx
     networks:
       - net
 
@@ -14,9 +12,12 @@ services:
     image: nginx:1.13
     restart: always
     ports:
-      - "80:80"
+      - "443:443"
+    depends_on:
+      - app
     volumes:
       - ./nginx/conf.d/:/etc/nginx/conf.d
+      - ./nginx/cert/:/cert
     networks:
       - net
  
