@@ -1,4 +1,7 @@
+import logging
 from flask import Flask
+
+logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
 
 @app.route('/hello/')
